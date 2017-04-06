@@ -1,5 +1,7 @@
 # TO DO APP
 import sys
+import os
+os.system("cls" if os.name == "nt" else "clear")
 
 def argument_reader():
     if len(sys.argv) == 1:
@@ -8,6 +10,7 @@ def argument_reader():
         if sys.argv[1] == "-l":
             list_todo()
         elif sys.argv[1] == "-a":
+
             add_task()
 
 def help_text():
@@ -42,13 +45,16 @@ def add_task():
 
 def list_todo():
     read_file()
-    nth = 0
-    for element in read_file():
-        nth += 1
-        if element[0] == "0":
-            print(nth, "[ ]", " - ", element[1])
-        elif element[0] == "1":
-            print(nth, "[*]", " - ", element[1])
+    if read_file() == []:
+        print("No todos for today! :)")
+    else:
+        nth = 0
+        for element in read_file():
+            nth += 1
+            if element[0] == "0":
+                print(nth, "[ ]", " - ", element[1])
+            elif element[0] == "1":
+                print(nth, "[*]", " - ", element[1])
 
 
 argument_reader()
