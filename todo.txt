@@ -1,0 +1,3 @@
+0;Walk the dog
+1;Buy milk
+0;Sleep

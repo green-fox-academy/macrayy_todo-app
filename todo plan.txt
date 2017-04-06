@@ -1,0 +1,70 @@
+python todo app
+
+- list manipulation
+    - data structures
+- file manipulation / IO handling
+    - file iras, olvasas
+    - file sorait listava alakitani
+- command line arguments parsing
+    - python_do.py -l - valtozo
+    - if command line argument == -l: list the todos
+    - opcionalis (messgae pl: -l "message")
+- exception handling
+
+ARGUMENTS - MASODIK ARGUMENTUM
+    -              -
+    -l             -
+    -a          "add milk"
+    -r          INT (task sorszama)
+    -c          INT
+
+    def argument_reader()
+        if no args return []
+        if -l return ["l"]
+        if -l, get milk return ["a", "get milk"]
+
+DATABASE - .csv file
+checked, name
+0|walk the dog
+1|buy milk
+
+DATE STRUCTURE
+pl: [[0, walk the dog], [1, buy milk]]
+pl: [{"ready": 0, "text": walk the dog}
+    {"ready": 1, "text": buy milk}]
+________
+OVERVIEW
+_____________________________
+-if no arg --> print
+
+    -def argument_reader() --> -l
+        --> open file
+        --> parse database (DB)
+        --> print
+
+    -def argument_reader() --> -a
+        --> open file
+        --> append line
+        --> print
+
+    -def argument_reader() --> -r
+        --> open file
+        --> remove line
+        --> print
+
+    -def argument_reader() --> -c
+        --> open file
+        --> parse database (DB)
+        --> flip checked
+        --> write database (DB)
+        --> print
+
+vezerles mindig van (-l, -c...,) - CONTROLLER
+open DB mindig van - MODELL - megnyit es listava alakit
+print mindig van - VIEW
+ketszer van parse DB
+--> fuggvenyek lesznek
+
+CONTROLLER  |-> conctructor, args parse, elinditja a feladatokat (MODELL es VIEW)
+MODELL      |-> open, append line, remove line, write file, (update line), (Parse DB) - ezeket meg kell csinalni (utolso ketto opcionalis)
+VIEW        |-> print todo list, print help, print message
