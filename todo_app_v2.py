@@ -32,8 +32,9 @@ def read_file():
 
 def add_task():
     todo_file = open("todo.txt", "a")
-    content =  "0;" + sys.argv[2] + "\n"
-    todo_file.writelines(content)
+    args = " ".join(sys.argv[2:])
+    text =  "0;" + args + "\n"
+    todo_file.writelines(text)
     todo_file.close()
     print("Task added.")
     read_file()
