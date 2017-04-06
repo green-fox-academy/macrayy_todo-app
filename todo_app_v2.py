@@ -10,8 +10,12 @@ def argument_reader():
         if sys.argv[1] == "-l":
             list_todo()
         elif sys.argv[1] == "-a":
-
-            add_task()
+            if sys.argv[2:] == []:
+                print("Unable to add: no task provided.")
+            else:
+                add_task()
+                read_file()
+                list_todo()
 
 def help_text():
     return print("\n"
@@ -40,8 +44,6 @@ def add_task():
     todo_file.writelines(text)
     todo_file.close()
     print("Task added.")
-    read_file()
-    list_todo()
 
 def list_todo():
     read_file()
