@@ -36,6 +36,8 @@ def add_task():
     todo_file.writelines(content)
     todo_file.close()
     print("Task added.")
+    read_file()
+    list_todo()
 
 def list_todo():
     read_file()
