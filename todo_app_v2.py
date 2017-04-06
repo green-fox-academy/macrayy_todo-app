@@ -28,13 +28,18 @@ def read_file():
     todo_file.close()
     return todo_list
 
+def add_task():
+    todo_file = open("todo.txt", "a")
+
 def list_todo():
     read_file()
+    nth = 0
     for element in read_file():
+        nth += 1
         if element[0] == "0":
-            print("[ ]", " - ", element[1])
+            print(nth, "[ ]", " - ", element[1])
         elif element[0] == "1":
-            print("[x]", " - ", element[1])
+            print(nth, "[*]", " - ", element[1])
 
 
 argument_reader(sys.argv)
