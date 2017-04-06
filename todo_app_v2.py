@@ -30,11 +30,11 @@ def read_file():
 
 def list_todo():
     read_file()
-    for element in todo_list:
+    for element in read_file():
         if element[0] == "0":
-            print("[ ]" + " - " + todo_list[1])
+            print("[ ]", " - ", element[1])
         elif element[0] == "1":
-            print("[x]" + " - " + todo_list[1])
+            print("[x]", " - ", element[1])
 
 
 argument_reader(sys.argv)
