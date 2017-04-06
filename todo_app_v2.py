@@ -1,12 +1,14 @@
 # TO DO APP
 import sys
 
-def argument_reader(arg):
+def argument_reader():
     if len(sys.argv) == 1:
         help_text()
     else:
         if sys.argv[1] == "-l":
             list_todo()
+        elif sys.argv[1] == "-a":
+            add_task()
 
 def help_text():
     return print("\n"
@@ -30,6 +32,10 @@ def read_file():
 
 def add_task():
     todo_file = open("todo.txt", "a")
+    content =  "0;" + sys.argv[2] + "\n"
+    todo_file.writelines(content)
+    todo_file.close()
+    print("Task added.")
 
 def list_todo():
     read_file()
@@ -42,4 +48,4 @@ def list_todo():
             print(nth, "[*]", " - ", element[1])
 
 
-argument_reader(sys.argv)
+argument_reader()
