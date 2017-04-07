@@ -4,6 +4,7 @@ import os
 os.system("cls" if os.name == "nt" else "clear")
 
 class Controller():
+
     def argument_reader(self):
         if len(sys.argv) == 1:
             help_display = Display()
@@ -19,9 +20,13 @@ class Controller():
                     add_display = Model()
                     add_display.add_task()
                     list_display.list_todo()
-
+            elif sys.argv[1] == "-r":
+                remove_display = Model()
+                remove_display.remove_task()
+                list_display.list_todo()
 
 class Model():
+
     def read_file(self):
         todo_file = open("todo.txt", "r")
         todo_lines = todo_file.readlines()
@@ -39,7 +44,24 @@ class Model():
         todo_file.close()
         print("Task added.")
 
+    def remove_task(self):
+        todo_file = open("todo.txt", "r")
+        todo_lines = todo_file.readlines()
+        todo_list = []
+        for line in todo_lines:
+            todo_list.append(line.split(";"))
+        todo_file.close()
+        new_todo_list = []
+        for list_element in range(len(todo_list)):
+            if list_element != sys.argv[2]:
+                list_element.append(new_todo_list)
+        todo_file = open("todo.txt", "w")
+        #for list_element in new_todo_list:
+        todo_file.write(new_todo_list)
+        todo_file.close()
+
 class Display():
+
     def list_todo(self):
         read = Model()
         read.read_file()

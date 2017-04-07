@@ -1,5 +1,0 @@
-0;Walk the dog
-1;Buy milk
-0;Sleep
-1;Do homework
-0;kill them all
