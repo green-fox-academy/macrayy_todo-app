@@ -47,16 +47,13 @@ class Model():
     def remove_task(self):
         todo_file = open("todo.txt", "r")
         todo_lines = todo_file.readlines()
-        todo_list = []
-        for line in todo_lines:
-            todo_list.append(line.split(";"))
         todo_file.close()
-        new_todo_list = []
-        for list_element in range(len(todo_list)):
-            if list_element != sys.argv[2]:
-                list_element.append(new_todo_list)
+        new_todo_list = ""
+        # remove_number = int(sys.argv[2]) - 1
+        for list_element in range(len(todo_lines)):
+            if list_element != int(sys.argv[2]) - 1:
+                new_todo_list += (todo_lines[list_element])
         todo_file = open("todo.txt", "w")
-        #for list_element in new_todo_list:
         todo_file.write(new_todo_list)
         todo_file.close()
 
