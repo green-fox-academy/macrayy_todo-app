@@ -24,6 +24,10 @@ class Controller():
                 remove_display = Model()
                 remove_display.remove_task()
                 list_display.list_todo()
+            elif sys.argv[1] == "-c":
+                check_task_display = Model()
+                check_task_display.check_task()
+                list_display.list_todo()
 
 class Model():
 
@@ -49,13 +53,30 @@ class Model():
         todo_lines = todo_file.readlines()
         todo_file.close()
         new_todo_list = ""
-        # remove_number = int(sys.argv[2]) - 1
         for list_element in range(len(todo_lines)):
             if list_element != int(sys.argv[2]) - 1:
                 new_todo_list += (todo_lines[list_element])
         todo_file = open("todo.txt", "w")
         todo_file.write(new_todo_list)
         todo_file.close()
+
+    def check_task(self):
+        self.read_file()
+        read_file = self.read_file()
+        for list_element in range(len(read_file)):
+            if list_element == int(sys.argv[2]) - 1:
+                nth_element = read_file[list_element]
+                if nth_element[0] == "0":
+                    nth_element[0] = "1"
+                elif nth_element[0] == "1":
+                    nth_element[0] = "0"
+        write_file = ""
+        for list_element in read_file:
+            write_file += ";".join(list_element)
+        todo_file = open("todo.txt", "w")
+        todo_file.write(write_file)
+        todo_file.close()
+
 
 class Display():
 

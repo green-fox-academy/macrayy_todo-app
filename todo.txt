@@ -1,4 +1,5 @@
-0;gdgds
-0;sadsasdas
-1;adas a
-0;sdfsdf
+0;walk the dog
+0;finish your tea
+0;die
+0;kill the dragon
+0;take exam
