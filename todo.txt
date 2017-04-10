@@ -1,4 +1,4 @@
-0;walk the dog
+1;walk the dog
 0;finish your tea
 0;die
 0;kill the dragon

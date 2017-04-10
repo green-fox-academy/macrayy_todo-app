@@ -6,8 +6,8 @@ os.system("cls" if os.name == "nt" else "clear")
 class Controller():
 
     def argument_reader(self):
+        help_display = Display()
         if len(sys.argv) == 1:
-            help_display = Display()
             help_display.help_text()
         else:
             list_display = Display()
@@ -21,13 +21,22 @@ class Controller():
                     add_display.add_task()
                     list_display.list_todo()
             elif sys.argv[1] == "-r":
-                remove_display = Model()
-                remove_display.remove_task()
-                list_display.list_todo()
+                if sys.argv[2:] == []:
+                    print("Unable to remove: no index provided")
+                else:
+                    remove_display = Model()
+                    remove_display.remove_task()
+                    list_display.list_todo()
             elif sys.argv[1] == "-c":
-                check_task_display = Model()
-                check_task_display.check_task()
-                list_display.list_todo()
+                if sys.argv[2:] == []:
+                    print("Unable to check: no index provided")
+                else:
+                    check_task_display = Model()
+                    check_task_display.check_task()
+                    list_display.list_todo()
+            else:
+                print("Unsupported argument")
+                help_display.help_text()
 
 class Model():
 
